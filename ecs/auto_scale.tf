@@ -11,8 +11,8 @@ resource "aws_cloudwatch_metric_alarm" "cpu_high" {
   statistic           = "Maximum"
   threshold           = var.max_cpu_threshold
   dimensions = {
-    ClusterName = var.ecs_cluster_name
-    ServiceName = var.ecs_service_name
+    ClusterName = aws_ecs_cluster.my_cluster.name
+    ServiceName = aws_ecs_service.demo_service.name
   }
   alarm_actions = [aws_appautoscaling_policy.scale_up_policy.arn]
 
@@ -89,4 +89,5 @@ resource "aws_appautoscaling_target" "scale_target" {
   scalable_dimension = "ecs:service:DesiredCount"
   min_capacity       = var.scale_target_min_capacity
   max_capacity       = var.scale_target_max_capacity
+  depends_on         = [aws_ecs_service.demo_service]
 }

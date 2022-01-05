@@ -13,7 +13,13 @@ resource "aws_ecs_task_definition" "demo_task" {
         }
       ],
       "memory": 512,
-      "cpu": 256
+      "cpu": 256,
+      "environment": [
+       {
+         "name": "WELCOME_MSG", 
+         "value": "Hello World"
+       }
+      ]
     }
   ]
   DEFINITION

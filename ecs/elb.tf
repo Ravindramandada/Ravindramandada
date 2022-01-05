@@ -1,12 +1,12 @@
 resource "aws_lb" "application_load_balancer" {
-  name               = "demo-app-lb"
+  name               = "django-app-lb"
   load_balancer_type = "application"
   subnets            = [aws_subnet.public-subnet-1.id, aws_subnet.public-subnet-2.id]
   security_groups    = [aws_security_group.load-balancer.id]
 }
 
 resource "aws_lb_target_group" "target_group" {
-  name        = "target-group"
+  name        = "django-target-group"
   port        = 8000
   protocol    = "HTTP"
   target_type = "ip"
