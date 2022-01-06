@@ -10,7 +10,7 @@ phases:
       - chmod +x /usr/bin/terraform
     finally:
       - terraform --version
-  pre-build:
+  pre_build:
     commands:
      - cd ecr
      - terraform init
