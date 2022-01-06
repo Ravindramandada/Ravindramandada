@@ -10,9 +10,9 @@ phases:
       - chmod +x /usr/bin/terraform
     finally:
       - terraform --version
-	build:
+  build:
     commands:
      - cd ecr
      - terraform init
-	   - terraform plan -auto-approve
-	   - terraform apply -auto-approve
+     - terraform plan -auto-approve
+     - terraform apply -auto-approve
