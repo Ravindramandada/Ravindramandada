@@ -14,5 +14,5 @@ phases:
     commands:
      - cd ecr
      - terraform init
-     - terraform plan -auto-approve
+     - terraform plan
      - terraform apply -auto-approve
