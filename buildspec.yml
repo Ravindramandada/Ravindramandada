@@ -1,8 +1,6 @@
 version: 0.2
 phases: 
   install:
-    runtime-versions:
-      python: 3.9
     commands:
       # install terraform binary
       - curl -s -qL -o terraform_install.zip https://releases.hashicorp.com/terraform/1.1.2/terraform_1.1.2_linux_amd64.zip
