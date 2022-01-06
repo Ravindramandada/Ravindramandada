@@ -10,9 +10,16 @@ phases:
       - chmod +x /usr/bin/terraform
     finally:
       - terraform --version
-  build:
+  pre-build:
     commands:
      - cd ecr
      - terraform init
      - terraform plan
      - terraform apply -auto-approve
+  build:
+    commands:
+     - cd ..
+     - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 870597747842.dkr.ecr.us-east-1.amazonaws.com
+     - docker build -t djangoapp .
+     - docker tag djangoapp:latest 870597747842.dkr.ecr.us-east-1.amazonaws.com/djangoapp:latest
+     - docker push 870597747842.dkr.ecr.us-east-1.amazonaws.com/djangoapp:latest
