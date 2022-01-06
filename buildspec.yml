@@ -23,3 +23,9 @@ phases:
      - docker build -t djangoapp .
      - docker tag djangoapp:latest 870597747842.dkr.ecr.us-east-1.amazonaws.com/djangoapp:latest
      - docker push 870597747842.dkr.ecr.us-east-1.amazonaws.com/djangoapp:latest
+  post_build:
+    commands:
+     - cd ecs
+     - terraform init
+     - terraform plan
+     - terraform apply -auto-approve
