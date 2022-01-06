@@ -6,5 +6,10 @@ terraform {
       source  = "hashicorp/aws"
       version = ">= 3.51"
     }
-  }
+   }
+   backend "s3" {
+    bucket = "django-terraform"
+    key = "ecs"
+    region = "us-east-1"
+    }
 }
